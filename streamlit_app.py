@@ -68,7 +68,7 @@ if st.session_state.stored_session:
 st.title("️🐝 BeeBytes")
 st.subheader("Lose No Insight, Gain Organization")
 
-### AI MODEL
+# ## AI MODEL
 
 
 # Create an OpenAI instance
@@ -83,13 +83,13 @@ if 'entity_memory' not in st.session_state:
     )
 
 # Load existing vector database
-persist_directory = 'chroma/'
-embedding = OpenAIEmbeddings()
+#persist_directory = 'chroma/'
+#embedding = OpenAIEmbeddings()
 
-vectordb = Chroma(
-    persist_directory=persist_directory,
-    embedding_function=embedding
-)
+#vectordb = Chroma(
+#    persist_directory=persist_directory,
+#    embedding_function=embedding
+#)
 
 # read the text file into string
 text_file = open("KnowledgeBase.txt", "r")  # open text file in read mode
@@ -113,7 +113,7 @@ conversation = ConversationChain(
     memory=st.session_state.entity_memory
 )
 
-### FRONT INTERFACE
+# ## FRONT INTERFACE
 
 
 # Initialize chat history
