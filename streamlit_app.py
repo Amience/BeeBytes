@@ -132,7 +132,7 @@ if user_message := st.chat_input("Let's explore your issues?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": user_message})
     # Retrieve relevant knowledge from knowledge base
-    retrieved_knowledge_base = vectordb.max_marginal_relevance_search(user_message, k=1)
+    # retrieved_knowledge_base = vectordb.max_marginal_relevance_search(user_message, k=1)
     # Create the response to user message
     #response = Conversation(
     #    {"input_documents": retrieved_knowledge_base, "human_input": user_message},
