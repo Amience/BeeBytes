@@ -41,7 +41,7 @@ openai_api_key = st.sidebar.text_input(
 if openai_api_key:
     st.session_state['OPENAI_API_KEY'] = openai_api_key
     os.environ['OPENAI_API_KEY'] = openai_api_key
-    openai.api_key = os.environ['OPENAI_API_KEY']
+    openai.api_key = st.session_state['OPENAI_API_KEY']
 else:
     st.error("Please add your OpenAI API key to continue.")
     st.info("Obtain your key from this link: https://platform.openai.com/account/api-keys")
@@ -134,10 +134,10 @@ if user_message := st.chat_input("Let's explore your issues?"):
     # Retrieve relevant knowledge from knowledge base
     # retrieved_knowledge_base = vectordb.max_marginal_relevance_search(user_message, k=1)
     # Create the response to user message
-    #response = Conversation(
+    # response = Conversation(
     #    {"input_documents": retrieved_knowledge_base, "human_input": user_message},
     #    return_only_outputs=True
-    #)['output_text']
+    # )['output_text']
     response = conversation.run(user_message)
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
@@ -177,5 +177,7 @@ st.sidebar.write('''<p style="font-size:10px; color:black;"><i>
 from the use of the results suggested by <u>BeeBytes</u>. Users are advised to exercise discretion and judgment while \
 interpreting and using the results provided by the app. We are not liable for any consequences, whether direct or \
 indirect, that may arise from the use or misuse of the app
-</i></p>''',unsafe_allow_html=True)
+</i></p>''', unsafe_allow_html=True)
+
+st.sidebar.write('<p style="font-size:10px; color:black;">Powered by 🦜LangChain + OpenAI + Streamlit</p>', unsafe_allow_html=True)
 
